@@ -1,1 +1,40 @@
-"welcome to home page "
+<!-- app/views/welcome/index.html.erb -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Welcome to the Product Showcase</title>
+  <%= stylesheet_link_tag 'welcome', media: 'all' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Welcome to the Product Showcase</h1>
+
+    <% if @products.any? %>
+      <h2>All Products</h2>
+      <ul class="product-list">
+        <% @products.each do |product| %>
+          <li class="product-item">
+            <div class="product-info">
+              <h3><%= link_to product.name, product %></h3>
+              <p><strong>Description:</strong> <%= product.description %></p>
+              <p><strong>Price:</strong> <%= number_to_currency(product.price) %></p>
+            </div>
+
+            <% if product.image.attached? %>
+              <div class="product-image">
+                <%= image_tag product.image, class: 'img-fluid' %>
+              </div>
+            <% end %>
+          </li>
+          <hr>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>No products available.</p>
+    <% end %>
+  </div>
+
+</body>
+</html>

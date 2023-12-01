@@ -67,3 +67,6 @@ group :test do
 end
 
 gem 'devise'
+# Gemfile
+gem 'cancancan', '~> 3.1'
+

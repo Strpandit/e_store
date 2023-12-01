@@ -14,6 +14,10 @@ class ApplicationController < ActionController::Base
     def after_sign_out_path_for(resource_or_scope)
         root_path # Redirect to root after sign out
     end
+
+    rescue_from CanCan::AccessDenied do |exception|
+        redirect_to root_path, alert: exception.message
+      end
   
     protected
   
