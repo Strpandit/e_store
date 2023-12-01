@@ -1,0 +1,41 @@
+<html>
+<head>
+    <style>
+        #cart{
+            border: 2px solid black
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid" id="cart">
+<h1 class="text-center text-success"> MY SHOPPING CART</h1>
+
+<% if @cart_items.present? %>
+  <table>
+    <thead>
+      <tr>
+        <th cope="col">Product</th>
+        <th cope="col">Price</th>
+        <th cope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @cart_items.each do |cart_item| %>
+        <tr>
+          <td><%= cart_item.product.name %></td>
+          <td><%= number_to_currency(cart_item.product.price) %></td>
+          <td>
+            <%= link_to 'Remove', remove_from_cart_path(cart_item.product), method: :delete, data: { confirm: 'Are you sure?' } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <p>Total: <%= number_to_currency(@cart_items.sum(&:product.price)) %></p>
+<% else %>
+  <p>Your cart is empty.</p>
+<% end %>
+</div>
+</body>
+</html>
