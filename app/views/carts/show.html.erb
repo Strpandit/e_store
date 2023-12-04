@@ -1,0 +1,37 @@
+<h1 class='text-center text-uppercase text-secondary'><b>My Shopping Cart</b></h1>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-12 text-center border rounded bg-light my-5">
+
+      <% if @cart_products.present? %>
+        <table class='table'>
+          <thead>
+            <tr>
+              <th scope="col">Product</th>
+              <th scope="col">Quantity</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @cart_products.each do |cart_item| %>
+              <tr>
+                <td><%= cart_item.product.name %></td>
+                <td><%= cart_item.quantity %></td> 
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+        <b><p class='fs-4'>Total Amount: <%= number_to_currency(@cart_products.sum { |cart_item| cart_item.product.price * cart_item.quantity }) %></p></b>
+        <%= link_to 'Place Order', cart_path(@cart), data: {
+          turbo_method: :delete,
+          turbo_confirm: "Confirm This Order?"
+        },class: 'btn btn-primary' %>
+      <% else %>
+        <p>Your cart is empty.</p>
+      <% end %>
+    </div>
+  </div>
+  <%= link_to 'BACK', cart_products_path, class: 'btn btn-primary' %>
+</div>
+

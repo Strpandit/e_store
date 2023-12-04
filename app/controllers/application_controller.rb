@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
     protect_from_forgery with: :exception
 
     def after_sign_in_path_for(resource)
-        root_path # Replace with your desired path after sign in
+        products_path # Replace with your desired path after sign in
     end
 
     def after_sign_up_path_for(resource)

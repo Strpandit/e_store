@@ -5,36 +5,52 @@
   <title>Welcome to the Product Showcase</title>
   <%= stylesheet_link_tag 'welcome', media: 'all' %>
   <%= csrf_meta_tags %>
+
+<style>
+  .card {
+  position: relative;
+  overflow: hidden;
+  }
+  .card{
+  transition: transform 0.7s ease;
+  }
+  .card:hover {
+  transform: scale(1.1);
+  }
+  .card img{
+    width: 170px;
+    height: 170px;
+    padding: 5px;
+    }
+</style>
 </head>
-<body>
+<body style="font-family: 'Mukta', sans-serif;">
 
-  <div class="container">
-    <h1>Welcome to the Product Showcase</h1>
-
-    <% if @products.any? %>
-      <h2>All Products</h2>
-      <ul class="product-list">
+  <div class="container-fluid my-4">
+    <h1 class = "text-center text-success my-4"><u>WELCOME TO THE PRODUCT SHOWCASE</u></h1>
+    <div class="row mt-2 text-center" style="margin-left:0px; margin-right:0px; overflow:hidden">
+      <% if @products.any? %>
         <% @products.each do |product| %>
-          <li class="product-item">
-            <div class="product-info">
-              <h3><%= link_to product.name, product %></h3>
-              <p><strong>Description:</strong> <%= product.description %></p>
-              <p><strong>Price:</strong> <%= number_to_currency(product.price) %></p>
-            </div>
+            <div class="col-lg-6 p-3">
+              <div class="card">
+                <div class="card-body">
+                  <% if product.image.attached? %>
+                    <div class="text-center">
+                      <%= image_tag product.image %>
+                    </div>
+                  <% end %>
+                  <h3><%= link_to product.name, products_path %></h3>
+                  <p><strong>Description:</strong> <%= product.description %></p>
+                  <p><strong>Price:</strong> <%= number_to_currency(product.price) %></p>
 
-            <% if product.image.attached? %>
-              <div class="product-image">
-                <%= image_tag product.image, class: 'img-fluid' %>
+                </div>
               </div>
-            <% end %>
-          </li>
-          <hr>
+            </div>   
         <% end %>
-      </ul>
-    <% else %>
-      <p>No products available.</p>
-    <% end %>
+      <% else %>
+        <p>No products available.</p>
+      <% end %>
+    </div>
   </div>
-
 </body>
 </html>

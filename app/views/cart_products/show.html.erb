@@ -1,0 +1,9 @@
+<h1><%= @cart_products.cart_id%></h1>
+
+<% if @cart_products.product_id %>
+ 
+<% end %>
+
+<p><%= @cart_products.quantity %></p>
+
+<%= link_to 'Back', cart_products_path %>
