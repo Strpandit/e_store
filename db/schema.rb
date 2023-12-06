@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_01_133902) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_04_140014) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -56,6 +56,12 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_01_133902) do
     t.index ["user_id"], name: "index_carts_on_user_id"
   end
 
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -63,7 +69,19 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_01_133902) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id", null: false
+    t.integer "category_id"
+    t.integer "subcategory_id"
+    t.index ["category_id"], name: "index_products_on_category_id"
+    t.index ["subcategory_id"], name: "index_products_on_subcategory_id"
     t.index ["user_id"], name: "index_products_on_user_id"
+  end
+
+  create_table "subcategories", force: :cascade do |t|
+    t.string "name"
+    t.integer "category_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_subcategories_on_category_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -84,5 +102,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_01_133902) do
   add_foreign_key "cart_products", "carts"
   add_foreign_key "cart_products", "products"
   add_foreign_key "carts", "users"
+  add_foreign_key "products", "categories"
+  add_foreign_key "products", "subcategories"
   add_foreign_key "products", "users"
+  add_foreign_key "subcategories", "categories"
 end

@@ -1,0 +1,49 @@
+<html>
+<head>
+  <style>
+    .card {
+      border: 1px solid black;
+      max-width: 100%;
+      text-align: center;
+      display: inline-block;
+      margin: 10px;
+    }
+    .card img {
+      width: 170px;
+      height: 170px;
+      padding: 5px;
+    }
+  </style>
+</head>
+<body>
+<div>
+  <%= link_to 'Check Our Products', cart_products_path, class: 'btn btn-success float-right' %>
+  <b><h1 class="text-center text-secondary">ALL PRODUCTS </h1></b>
+</div>
+
+  <div class="container-fluid my-4" >
+    <div class="row mt-2 text-center" style="margin-left:0px; margin-right:0px; overflow:hidden">
+      <% if @products.any? %>
+        <% @products.each do |product| %>
+          <div class="col-lg-4 p-3">
+            <div class="card" id="item1">
+              <% if product.image.attached? %>
+                <div class="text-center">
+                  <%= image_tag product.image %>
+                </div>
+              <% end %>
+              <h2 class="text-bold"><%= product.name %></h2>
+              <p><%= product.description %></p>
+              <p><strong>Price:</strong> <%= number_to_currency(product.price) %></p>
+              <%= link_to 'Add to Cart', add_to_cart_path(product_id: product.id), method: :post, class: 'btn btn-warning text-light' %>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <p>No products available.</p>
+      <% end %>
+    </div>
+  </div>
+
+</body>
+</html>

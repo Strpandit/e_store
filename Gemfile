@@ -23,6 +23,10 @@ gem "turbo-rails"
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
 
+gem 'rspec-rails'
+gem 'simplecov', '0.17.0'
+gem 'rspec-sonarqube-formatter', '1.5.0'
+
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 

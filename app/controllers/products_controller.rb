@@ -7,6 +7,7 @@ class ProductsController < ApplicationController
       # redirect_to @product
     end
 
+
     def new
       @product = current_user.products.new
     end
@@ -31,7 +32,7 @@ class ProductsController < ApplicationController
     private
     
     def product_params
-      params.require(:product).permit(:name, :description, :price,:user_id,:image)
+      params.require(:product).permit(:name, :description, :price,:user_id,:image, :category_id, :subcategory_id)
     end
   end
   

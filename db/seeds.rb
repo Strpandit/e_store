@@ -8,11 +8,27 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-user1 = User.create( email: 'user1@example.com', password: 'password', role: 'buyer')
-user2 = User.create( email: 'user2@example.com', password: 'password', role: 'seller')
+electronics = Category.create(name: "Electronics")
+clothings = Category.create(name: "Clothing")
+footwears = Category.create(name: "Footwear")
+watches = Category.create(name: "Watch")
+bags = Category.create(name: "Bag")
+books = Category.create(name: "Book")
 
-product1 = Product.create(name: 'Product 1', description:"abchsghgsh", price: 19.99, user_id:1)
-product2 = Product.create(name: 'Product 2', description:"abchsghgsh", price: 29.99, user_id:2)
-product3 = Product.create(name: 'Product 3', description:"abchsghgsh", price: 39.99, user_id:2)
+laptops = electronics.subcategories.create(name: "Laptops")
+smartphones = electronics.subcategories.create(name: "Smartphones")
 
-cart_p = CartProduct.create(cart_id: 1, product_id: 2 , quantity: 2)
+shirts = clothings.subcategories.create(name: "Shirt")
+tshirts = clothings.subcategories.create(name: "Tshirt")
+
+shoes = footwears.subcategories.create(name: "Shoes")
+flip_flops = footwears.subcategories.create(name: "Flip Flops")
+
+digitalwatches = watches.subcategories.create(name: "Digital")
+analogwatches = watches.subcategories.create(name: "Analog")
+
+handbags = bags.subcategories.create(name: "Hand Bag")
+schoolbags = bags.subcategories.create(name: "School Bag")
+
+book1 = books.subcategories.create(name: "Spritual")
+book2 = books.subcategories.create(name: "Comics")

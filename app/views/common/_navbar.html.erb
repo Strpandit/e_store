@@ -22,35 +22,48 @@
   </button>
   <div class="collapse navbar-collapse" id="collapsibleNavbar">
     <ul class="navbar-nav">
-    <li>
-      <a class="nav-link text-white px-3" style="font-size: 20px;" <%= link_to 'HOME', root_path %> </a>
-    </li>
-    <% if !current_user.present?%>
-      <li class="nav-item abc">
-        <a class="nav-link text-white px-3" style="font-size: 20px;" <%= link_to 'SIGN UP', new_user_registration_path %> </a>
+      <li>
+        <a class="nav-link text-white px-3" style="font-size: 20px;" <%= link_to 'HOME', root_path %> </a>
       </li>
-      <li class="nav-item abc">
-        <a class="nav-link text-white px-3" style="font-size: 20px;" <%= link_to 'SIGN IN', user_session_path %> </a>
-      </li>
+      <% if !current_user.present?%>
+        <li class="nav-item abc">
+          <a class="nav-link text-white px-3" style="font-size: 20px;" <%= link_to 'SIGN UP', new_user_registration_path %> </a>
+        </li>
+        <li class="nav-item abc">
+          <a class="nav-link text-white px-3" style="font-size: 20px;" <%= link_to 'SIGN IN', user_session_path %> </a>
+        </li>
       <% end %>
       <% if user_signed_in? %>
-      <li class="nav-item abc">
-      <a class="nav-link text-white px-3" style="font-size: 20px;" <%= link_to "LOG OUT", destroy_user_session_path, data: { "turbo-method": :delete }  %> </a>
-    </li> 
-    <% if current_user.role == "seller" %>
-    <li class="nav-item abc">
-    <a class="nav-link text-white px-3" style="font-size: 20px;" <%= link_to "ADD PRODUCT", new_product_path  %> </a>
-  </li> 
-  <% end %>
-    <% else %>
-    <% end %>
+        <li class="nav-item abc">
+          <a class="nav-link text-white px-3" style="font-size: 20px;" <%= link_to "LOG OUT", destroy_user_session_path, data: { "turbo-method": :delete }  %> </a>
+        </li> 
+        <% if current_user.role == "seller" %>
+          <li class="nav-item abc">
+            <a class="nav-link text-white px-3" style="font-size: 20px;" <%= link_to "ADD PRODUCT", new_product_path  %> </a>
+          </li> 
+        <% end %>
+        <% if current_user.role == "buyer" %>
+        <li class="nav-item dropdown">
+          <a class="nav-link px-3 dropdown-toggle text-white" style="font-size: 20px;" href="#" id="navbarDropdown" role="button"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              ALL CATEGORIES
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background: white; margin-top: 31px;">
+              <a class="dropdown-item px-3" style="font-size: 20px;" <%= link_to "Clothings", clothing_path  %> </a>
+              <a class="dropdown-item px-3" style="font-size: 20px;" <%= link_to "Electronics", electronic_path  %> </a>
+              <a class="dropdown-item px-3" style="font-size: 20px;" <%= link_to "Books", book_path  %> </a>
+              <a class="dropdown-item px-3" style="font-size: 20px;" <%= link_to "Footwears", footwear_path  %> </a>
+              <a class="dropdown-item px-3" style="font-size: 20px;" <%= link_to "Watches", watch_path  %> </a>
+              <a class="dropdown-item px-3" style="font-size: 20px;" <%= link_to "Bags", bag_path  %> </a>
+          </div>
+        </li>
+      <% end %>
+      <% else %>
+      <% end %>
 
     </ul>
   </div>
-      <form class="form-inline my-2 my-lg-0 float-right">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+
 </nav>
 <br>
 

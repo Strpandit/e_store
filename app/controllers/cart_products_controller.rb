@@ -19,7 +19,7 @@ class CartProductsController < ApplicationController
       @cart_product.quantity += 1
     end
     if @cart_product.save
-      redirect_to products_path, notice: 'Product added to cart!'
+      redirect_to cart_products_path, notice: 'Product added to cart!'
     else
       redirect_to root_path, alert: 'Failed to add product to cart!'
     end

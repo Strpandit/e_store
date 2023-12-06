@@ -33,12 +33,22 @@
               <%= form.text_field :price, id: :product_price, class: "form-control" %>
             </div>
 
+            <div class="form-group">
+              <%= form.label :category %>
+              <%= form.select :category_id, Category.pluck(:name, :id) %>
+            </div>
+
+            <div class="form-group">
+              <%= form.label :sub_category %>
+              <%= form.select :subcategory_id, Subcategory.pluck(:name, :id) %>
+            </div>
 
             <div class="form-group">
                 <%= form.label :image %>
                 <%= form.file_field :image, class: "form-control" %>
             </div>
-          
+
+
             <div class="form-group text-center">
               <%= form.submit "ADD", class: "btn btn-primary" %>
             </div>
@@ -50,3 +60,20 @@
     </div>
   </div>
 </div>
+
+<script>
+ document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById('product_category_id').addEventListener('change', function(){
+  e = document.getElementById('product_category_id')
+  category_id = e.options[e.selectedIndex].value
+  document.getElementById('product_subcategory_id').innerHTML = ""
+fetch(`/get_sub_category.json?category_id=${category_id}`)
+        .then(response => response.json())
+        .then(json => {
+            json.forEach(element => {
+              document.getElementById('product_subcategory_id').innerHTML += `<option value=${element.id}>${element.name}</option>` ;
+             });
+     })
+ })
+ })
+</script>
