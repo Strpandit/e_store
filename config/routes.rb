@@ -16,5 +16,8 @@ Rails.application.routes.draw do
   resources :categories
 
   get 'get_sub_category', to: "categories#get_sub_category"
+
+  resources :company_details
+  delete 'companies_details/:id', to: 'company_details#destroy', as: 'delete_companies_details'
 end
   

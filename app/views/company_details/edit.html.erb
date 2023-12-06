@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      text-align: center;
+    }
+
+    h3 {
+      color: #333;
+    }
+
+    .form-container {
+      max-width: 400px;
+      margin: 20px auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    input, textarea, select, button {
+      /* width: 100%; */
+      padding: 10px;
+      margin-bottom: 15px;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      padding: 12px;
+      cursor: pointer;
+      border-radius: 4px;
+      text-align: center;
+
+      
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- Your header goes here -->
+
+<div class="form-container">
+  <h3>Update Company Details</h3>
+  <%= form_with model: @company_detail do |form| %><br>
+    <%= form.text_field :company_name, placeholder: :Company_Name %><br><br>
+    <%= form.text_field :company_email, placeholder: :Company_Email %><br><br>
+    <%= form.number_field :company_phone, placeholder: :Company_Address %><br><br>
+    <%= form.text_area :company_address, placeholder: :Company_Phone %><br><br>
+    
+   
+    <%= form.submit "Update Details" %>
+  <% end %>
+</div>
+
+
+</body>
+</html>
+
+
+
+
+
+

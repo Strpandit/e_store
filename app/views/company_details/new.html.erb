@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+      <div class="card-header"><h2>COMPANY DETAILS</h2></div>
+      <div class="card-body">
+
+        <%= form_with(model: @company_detail, local: true) do |form| %>
+            <% if @company_detail.errors.any? %>
+              <div id="error_explanation">
+                <h2><%= pluralize(@company_detail.errors.count, 'error') %> prohibited this company_detail_pah from being saved:</h2>
+          
+                <ul>
+                  <% @company_detail.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+          
+            <div class="form-group">
+              <%= form.label :Company_Name %>
+              <%= form.text_field :company_name, id: :company_name, class: "form-control"%>
+            </div>
+          
+            <div class="form-group">
+              <%= form.label :Company_Email%>
+              <%= form.text_field :company_email, id: :company_email, class: "form-control" %>
+            </div>
+          
+            <div class="form-group">
+              <%= form.label :Contact_Number %>
+              <%= form.number_field :company_phone, id: :company_phone, class: "form-control" %>
+            </div>
+
+               <div class="form-group">
+              <%= form.label :Company_Address%>
+              <%= form.text_area :company_address, id: :company_address, class: "form-control" %>
+            </div>
+
+          
+            <div class="form-group text-center">
+              <%= form.submit "ADD COMPANY DETAILS", class: "btn btn-primary"%>
+            </div>
+
+          <% end %>
+  
+  
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

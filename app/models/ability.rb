@@ -8,6 +8,7 @@ class Ability
     if user.buyer?
       can :read, Product
       can :buy, Product
+      can :manage, Category
     elsif user.seller?
       can :create, Product
     end

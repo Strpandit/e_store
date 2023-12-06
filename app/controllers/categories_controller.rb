@@ -1,6 +1,7 @@
 class CategoriesController < ApplicationController
     respond_to :html, :json
     before_action :authenticate_user!
+    # load_and_authorize_resource
 
     def get_sub_category
       if params[:category_id]

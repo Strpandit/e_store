@@ -41,6 +41,12 @@
           <li class="nav-item abc">
             <a class="nav-link text-white px-3" style="font-size: 20px;" <%= link_to "ADD PRODUCT", new_product_path  %> </a>
           </li> 
+          <li class="nav-item abc">
+            <a class="nav-link text-white px-3" style="font-size: 20px;" <%= link_to "ADD COMPANY", new_company_detail_path  %> </a>
+          </li>
+          <li class="nav-item abc">
+            <a class="nav-link text-white px-3" style="font-size: 20px;" <%= link_to "COMPANY DETAILS", company_details_path  %> </a>
+          </li>
         <% end %>
         <% if current_user.role == "buyer" %>
         <li class="nav-item dropdown">

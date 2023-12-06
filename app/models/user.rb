@@ -6,6 +6,7 @@ class User < ApplicationRecord
     has_one :cart
     has_many :products
     # has_many :cart_products
+    has_one :company_detail
     
     def buyer?
       role == 'buyer'
