@@ -8,13 +8,9 @@ Rails.application.routes.draw do
     end
   end
   get 'add_to_cart/:product_id', to: 'cart_products#new', as: 'add_to_cart'
-<<<<<<< HEAD
-  resources :products 
-=======
   # get '/products/:id', to: 'products#show', as: 'show_product'
   delete 'products/:id', to: 'products#destroy', as: 'delete_product'
 
->>>>>>> Final ui
   get 'clothing', to: "categories#clothing", as: 'clothing'
   get 'electronic', to: "categories#electronic", as: 'electronic'
   get 'watch', to: "categories#watch", as: 'watch'

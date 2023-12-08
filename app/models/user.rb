@@ -7,10 +7,7 @@ class User < ApplicationRecord
     has_many :products
     # has_many :cart_products
     has_one :company_detail
-<<<<<<< HEAD
-=======
     has_one :profile
->>>>>>> Final ui
     
     def buyer?
       role == 'buyer'
