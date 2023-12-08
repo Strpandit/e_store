@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
     respond_to :html, :json
-    before_action :authenticate_user!
+    before_action :authenticate_user!, except: [:clothing, :book, :bag, :watch, :footwear, :electronic]
     # load_and_authorize_resource
 
     def get_sub_category

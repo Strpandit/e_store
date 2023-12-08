@@ -1,16 +1,19 @@
-# app/models/ability.rb
 class Ability
   include CanCan::Ability
 
   def initialize(user)
-    user ||= User.new # guest user (not logged in)
+    user ||= User.new
 
     if user.buyer?
       can :read, Product
       can :buy, Product
-      can :manage, Category
+      can :search, Product
     elsif user.seller?
-      can :create, Product
+      can :manage, Product, user_id: user.id
+      cannot :search, Product
+      cannot :manage, Cart
+    else
+      can :search, Product
     end
   end
 end

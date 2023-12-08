@@ -1,3 +1,5 @@
+
+
 <html>
 <head>
   <style>
@@ -73,12 +75,12 @@
   </style style="font-family: 'Mukta', sans-serif;">
 </head>
 <body>
-<h1 class="text-center text-light bg-warning  py-3" style='font-weight:bold;'>ALL PRODUCTS</h1>
+<h1 class="text-center text-light bg-warning  py-3" style='font-weight:bold;'>Search Results</h1>
   <div class="container-fluid">
     <div class="container my-4">
       <div class="row mt-2 text-center" style="margin-left:0px; margin-right:0px; overflow:hidden">
-        <% if @products.any? %>
-          <% @products.each do |product| %>
+      <% if @results.present? %>
+          <% @results.each do |product| %>
             <div class="col-lg-4 p-3">
               <div class="card" id="item1">
                 <% if product.image.attached? %>

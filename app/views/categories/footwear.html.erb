@@ -1,49 +1,114 @@
 <html>
 <head>
   <style>
+    body {
+      font-family: 'Mukta', sans-serif;
+      background-color: #F4F4F4;
+      margin: 0;
+      padding: 0;
+    }
+
     .card {
-      border: 1px solid black;
+      border: 1px solid #ddd;
       max-width: 100%;
       text-align: center;
       display: inline-block;
       margin: 10px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
     .card img {
-      width: 170px;
-      height: 170px;
-      padding: 5px;
+      width: 100%;
+      height: auto;
+      border-bottom: 1px solid #ddd;
+      border-radius: 8px 8px 0 0;
     }
-  </style>
+    .card-body {
+      padding: 15px;
+    }
+    .card h2 {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .card p {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 15px;
+    }
+    .card-buttons {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 15px;
+    }
+    .btn-add-to-cart, .btn-buy-now {
+      width: 48%;
+      padding: 10px;
+      font-size: 14px;
+      cursor: pointer;
+      border-radius: 3px;
+      transition: background-color 0.3s;
+    }
+    .btn-add-to-cart {
+      background-color: #FFC107; /* Yellow */
+      color: #fff;
+    }
+    .btn-buy-now {
+      background-color: #007BFF; /* Blue */
+      color: #fff;
+    }
+    .btn-add-to-cart:hover, .btn-buy-now:hover {
+      filter: brightness(90%);
+    }
+    .btn-success {
+      background-color: #28A745; /* Green */
+      color: #fff;
+    }
+  </style style="font-family: 'Mukta', sans-serif;">
 </head>
 <body>
-<div>
-  <%= link_to 'Check Our Products', cart_products_path, class: 'btn btn-success float-right' %>
-  <b><h1 class="text-center text-secondary">ALL PRODUCTS </h1></b>
-</div>
-
-  <div class="container-fluid my-4" >
-    <div class="row mt-2 text-center" style="margin-left:0px; margin-right:0px; overflow:hidden">
-      <% if @products.any? %>
-        <% @products.each do |product| %>
-          <div class="col-lg-4 p-3">
-            <div class="card" id="item1">
-              <% if product.image.attached? %>
-                <div class="text-center">
-                  <%= image_tag product.image %>
+<h1 class="text-center text-light bg-warning  py-3" style='font-weight:bold;'>ALL PRODUCTS</h1>
+  <div class="container-fluid">
+    <div class="container my-4">
+      <div class="row mt-2 text-center" style="margin-left:0px; margin-right:0px; overflow:hidden">
+        <% if @products.any? %>
+          <% @products.each do |product| %>
+            <div class="col-lg-4 p-3">
+              <div class="card" id="item1">
+                <% if product.image.attached? %>
+                  <div class="text-center">
+                    <%= image_tag product.image %>
+                  </div>
+                <% end %>
+                <div class="card-body">
+                  <h2 class="text-bold"><%= product.name %></h2>
+                  <p><%= product.description %></p>
+                  <p><strong>Price:</strong> <%= number_to_currency(product.price) %></p>
+                  <div class="card-buttons">
+                    <%= link_to 'Add to Cart', add_to_cart_path(product_id: product.id), method: :post, class: 'btn btn-add-to-cart' %>
+                    <%= link_to 'Buy Now', cart_path(@products), class: 'btn btn-buy-now' %>
+                  </div>
                 </div>
-              <% end %>
-              <h2 class="text-bold"><%= product.name %></h2>
-              <p><%= product.description %></p>
-              <p><strong>Price:</strong> <%= number_to_currency(product.price) %></p>
-              <%= link_to 'Add to Cart', add_to_cart_path(product_id: product.id), method: :post, class: 'btn btn-warning text-light' %>
+              </div>
             </div>
-          </div>
+          <% end %>
+        <% else %>
+          <p>No products available.</p>
         <% end %>
-      <% else %>
-        <p>No products available.</p>
-      <% end %>
+      </div>
     </div>
   </div>
-
 </body>
 </html>
+
+
+
+
+
+

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    table {
+      font-family: Arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+      text-align: center;
+    }
+    th, td {
+      text-align: center;
+      padding: 12px;
+    }
+    /* tr:nth-child(even) {
+    } */
+    h1 {
+      text-align: center;
+      height: 60px;
+      line-height: 60px;
+    }
+    button {
+      /* width: 150px; */
+      border: none;
+      background-color: #3498DB;
+      /* color: white; */
+      padding: 8px 16px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 14px;
+      cursor: pointer;
+      /* border-radius: 4px; */
+    }
+    button:hover {
+      /* background-color: #2980B9; */
+    }
+  </style>
+</head>
+<body>
+<h1>User Profile</h1>
+<table>
+  <tr>
+    <th scope="col">Profile Name</th>
+    <th scope="col">Profile Gender</th>
+    <th scope="col"> Profile Contact Number</th>
+    <th scope="col">Profile Address</th>
+  </tr>
+    <tr>
+        <td><%=@profile.name %></td>
+        <td><%=@profile.gender %></td>
+        <td><%=@profile.contact_number%></td>
+        <td><%=@profile.address%></td>
+    </tr>
+</table>
+</body>
+</html>

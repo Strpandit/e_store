@@ -15,17 +15,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
 
     <style>
-        body {
-            font-family: 'Mukta', sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
 
-        .container-fluid {
-        margin-top: 50px;
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:0px;
         }
-
         .row {
             margin-left: 0;
             margin-right: 0;
@@ -53,33 +48,28 @@
         padding: 10px;
         }
 
-        .card a {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100%;
-        }
-
         .card a:hover {
-            background-color: blue; 
-            color: white;
             text-decoration: none;
         }
         .stylish-link {
             color: black;
             text-decoration: none; 
-            font-weight: bold; 
+            # font-weight: bold; 
             font-size: 16px; 
             transition: color 0.3s ease; 
         }
 
         .card a {
-            color: black; 
+            display: flex;
+            color: black;
             text-decoration: none; 
-            font-weight: bold; 
+            # font-weight: bold; 
             font-size: 16px; 
             font-family: 'Your Custom Font', sans-serif; 
             transition: color 0.3s ease; 
+            align-items: center;
+            justify-content: center;
+            height: 100%;
         }
 
         .card {
@@ -97,36 +87,68 @@
             height: 170px;
             padding: 5px;
         }
+        .myclass{
+            font-size: 55px;
+            font-weight: bold;
+        }
+
     </style>
 </head>
 <body style="font-family: 'Mukta', sans-serif;">
+    <div id="carouselExample" class="carousel slide">
+        <div class="carousel-inner">
+        <div class="carousel-item active">
+            <%= image_tag "1.jpg", class:"d-block w-100", style:'height:700px;'%>
+        </div>
+        <div class="carousel-item">
+            <%= image_tag "2.jpg", class:"d-block w-100", style:'height:700px;' %>
+        </div>
+        <div class="carousel-item">
+            <%= image_tag "3.jpg", class:"d-block w-100", style:'height:700px;' %>
+        </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
 
     <% if !user_signed_in? %>
-        <div class="container-fluid my-4">
-            <div class="row mt-2 text-center" style="margin-left:0px; margin-right:0px; overflow:hidden;">
+    <div class="container">
+        <div class="row mt-4 text-center" style="margin-left:0px; margin-right:0px; overflow:hidden;">
+            <h1 class='text-center myclass my-4'>Our <span style='color:orangered;'>Pro</span>ducts</h1>
 
                 <div class="col-lg-4 p-3">
-                    <div class="card" style="border: none">
+                    <div class="card">
                         <div class="card-body">
                             <%= image_tag "clo1.png", width: 260 %>
-                            <a class="p-2" <%= link_to 'Clothings', clothing_path %></a>
+                            <a class="p-2 arrow-link" href="<%= clothing_path %>">Clothings
+                            <i class="fa-solid fa-arrow-right px-2"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
-
                 <div class="col-lg-4 p-3">
-                    <div class="card" style="border: none">
+                    <div class="card">
                         <div class="card-body">
                             <%= image_tag "electro.png", width: 330 %>
-                            <a class="" <%= link_to 'Electronics', electronic_path %></a>
+                            <a class="p-2 arrow-link" href="<%= electronic_path%>">Electronics
+                            <i class="fa-solid fa-arrow-right px-2"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 p-3">
-                    <div class="card" style="border: none">
+                    <div class="card">
                         <div class="card-body">
                             <%= image_tag "book.jpg", width: 180 %>
-                            <a class="p-2" <%= link_to 'Books', book_path %></a>
+                            <a class="p-2 arrow-link" href="<%= book_path%>">Books
+                            <i class="fa-solid fa-arrow-right px-2"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -136,26 +158,32 @@
             <div class="row mt-2 text-center" style="margin-left:0px; margin-right:0px; overflow:hidden;">
 
                 <div class="col-lg-4 p-3">
-                    <div class="card" style="border: none">
+                    <div class="card">
                         <div class="card-body">
                             <%= image_tag "shoes.avif", width: 280 %>
-                            <a class="p-2" <%= link_to 'Footwears', footwear_path %></a>
+                            <a class="p-2 arrow-link" href="<%= footwear_path%>"> Footwears
+                            <i class="fa-solid fa-arrow-right px-2"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 p-3">
-                    <div class="card" style="border: none">
+                    <div class="card">
                         <div class="card-body">
                             <%= image_tag "watch.jpg", width: 175 %>
-                            <a class="p-2" <%= link_to 'Watches', watch_path %></a>
+                            <a class="p-2 arrow-link" href="<%= watch_path%>">Watch
+                            <i class="fa-solid fa-arrow-right px-2"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 p-3">
-                    <div class="card" style="border: none">
+                    <div class="card">
                         <div class="card-body">
                             <%= image_tag "bag.jpg", width: 265 %>
-                            <a class="p-2" <%= link_to 'Bags', bag_path %></a>
+                            <a class="p-2 arrow-link" href="<%= bag_path%>">Bags
+                            <i class="fa-solid fa-arrow-right px-2"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -165,31 +193,37 @@
         </div>
     <%else%>
         <% if current_user.role == "buyer" %>
-            <div class="container-fluid my-4">
-                <div class="row mt-2 text-center" style="margin-left:0px; margin-right:0px; overflow:hidden;">
+            <div class="container">
+            <div class="row mt-4 text-center" style="margin-left:0px; margin-right:0px; overflow:hidden;">
+                <h1 class='text-center myclass my-4'>Our <span style='color:orangered;'>Pro</span>ducts</h1>
 
                     <div class="col-lg-4 p-3">
-                        <div class="card" style="border: none">
+                        <div class="card">
                             <div class="card-body">
                                 <%= image_tag "clo1.png", width: 260 %>
-                                <a class="p-2" <%= link_to 'Clothings', clothing_path %></a>
+                                <a class="p-2 arrow-link" href="<%= clothing_path %>">Clothings
+                                <i class="fa-solid fa-arrow-right px-2"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
-
                     <div class="col-lg-4 p-3">
-                        <div class="card" style="border: none">
+                        <div class="card">
                             <div class="card-body">
                                 <%= image_tag "electro.png", width: 330 %>
-                                <a class="" <%= link_to 'Electronics', electronic_path %></a>
+                                <a class="p-2 arrow-link" href="<%= electronic_path%>">Electronics
+                                <i class="fa-solid fa-arrow-right px-2"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-4 p-3">
-                        <div class="card" style="border: none">
+                        <div class="card">
                             <div class="card-body">
                                 <%= image_tag "book.jpg", width: 180 %>
-                                <a class="p-2" <%= link_to 'Books', book_path %></a>
+                                <a class="p-2 arrow-link" href="<%= book_path%>">Books
+                                <i class="fa-solid fa-arrow-right px-2"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -199,126 +233,147 @@
                 <div class="row mt-2 text-center" style="margin-left:0px; margin-right:0px; overflow:hidden;">
 
                     <div class="col-lg-4 p-3">
-                        <div class="card" style="border: none">
+                        <div class="card">
                             <div class="card-body">
                                 <%= image_tag "shoes.avif", width: 280 %>
-                                <a class="p-2" <%= link_to 'Footwears', footwear_path %></a>
+                                <a class="p-2 arrow-link" href="<%= footwear_path%>"> Footwears
+                                <i class="fa-solid fa-arrow-right px-2"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-4 p-3">
-                        <div class="card" style="border: none">
+                        <div class="card">
                             <div class="card-body">
                                 <%= image_tag "watch.jpg", width: 175 %>
-                                <a class="p-2" <%= link_to 'Watches', watch_path %></a>
+                                <a class="p-2 arrow-link" href="<%= watch_path%>">Watch
+                                <i class="fa-solid fa-arrow-right px-2"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-4 p-3">
-                        <div class="card" style="border: none">
+                        <div class="card">
                             <div class="card-body">
                                 <%= image_tag "bag.jpg", width: 265 %>
-                                <a class="p-2" <%= link_to 'Bags', bag_path %></a>
+                                <a class="p-2 arrow-link" href="<%= bag_path%>">Bags
+                                <i class="fa-solid fa-arrow-right px-2"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
 
                 </div>
-            
+
             </div>
         <%end%>
     <%end%>
 
     <% if user_signed_in? %>
         <% if current_user.role == "seller" %>
-            <% if current_user.products.present? %>
-                <div class="container-fluid my-4">
-                <h1 class = "text-center text-success my-4"><u>WELCOME TO THE PRODUCT SHOWCASE</u></h1>
-                <div class="row mt-2 text-center" style="margin-left:0px; margin-right:0px; overflow:hidden">
-                    <% if current_user.products.any? %>
-                        <% current_user.products.each do |product| %>
-                        <div class="col-lg-6 p-3">
-                            <div class="card">
+        <% if current_user.products.present? %>
+        <h1 class='text-center myclass my-4'>Our <span style='color:orangered;'>Pro</span>ducts</h1>
+        <div class="container my-4">
+            <div class="row mt-2 text-center" style="margin-left:0px; margin-right:0px; overflow:hidden">
+                <% if current_user.products.any? %>
+                    <% current_user.products.each do |product| %>
+                    <div class="col-lg-4 p-3">
+                        <div class="card">
                             <div class="card-body">
                                 <% if product.image.attached? %>
-                                <div class="text-center">
-                                    <%= image_tag product.image %>
-                                </div>
+                                    <div class="text-center">
+                                        <%= image_tag product.image %>
+                                    </div>
                                 <% end %>
-                                <h3><%= link_to product.name, products_path %></h3>
+                                <h3><%= product.name %></h3>
                                 <p><strong>Description:</strong> <%= product.description %></p>
                                 <p><strong>Price:</strong> <%= number_to_currency(product.price) %></p>
-
-                            </div>
-                            </div>
-                        </div>   
-                        <% end %>
-                    <% else %>
-                    <p>No products available.</p>
-                    <% end %>
-                </div>
-                </div>
-            <% else %>
-                <div class="container-fluid my-4">
-                    <div class="row mt-2 text-center" style="margin-left:0px; margin-right:0px; overflow:hidden;">
-
-                        <div class="col-lg-4 p-3">
-                            <div class="card" style="border: none">
-                                <div class="card-body">
-                                    <%= image_tag "clo1.png", width: 260 %>
-                                    <a class="p-2" <%= link_to 'Clothings', clothing_path %></a>
-                                </div>
+                                <%= link_to "Edit", edit_product_path(product), class:'btn btn-primary px-3 my-1', style:'display:inline-block; color: white;' %>
+                                <%= button_to 'Delete', delete_product_path(product.id), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, method: :delete, class:'btn btn-danger px-2' %>
                             </div>
                         </div>
+                    </div>  
+                    <%end%> 
+                <% end %>
+            </div>
+        </div>
+        <% else %>
+        
+        <div class="container">
+            <div class="row mt-4 text-center" style="margin-left:0px; margin-right:0px; overflow:hidden;">
+                <h1 class='text-center myclass my-4'>Our <span style='color:orangered;'>Pro</span>ducts</h1>
 
-                        <div class="col-lg-4 p-3">
-                            <div class="card" style="border: none">
-                                <div class="card-body">
-                                    <%= image_tag "electro.png", width: 330 %>
-                                    <a class="" <%= link_to 'Electronics', electronic_path %></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 p-3">
-                            <div class="card" style="border: none">
-                                <div class="card-body">
-                                    <%= image_tag "book.jpg", width: 180 %>
-                                    <a class="p-2" <%= link_to 'Books', book_path %></a>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="row mt-2 text-center" style="margin-left:0px; margin-right:0px; overflow:hidden;">
-
-                        <div class="col-lg-4 p-3">
-                            <div class="card" style="border: none">
-                                <div class="card-body">
-                                    <%= image_tag "shoes.avif", width: 280 %>
-                                    <a class="p-2" <%= link_to 'Footwears', footwear_path %></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 p-3">
-                            <div class="card" style="border: none">
-                                <div class="card-body">
-                                    <%= image_tag "watch.jpg", width: 175 %>
-                                    <a class="p-2" <%= link_to 'Watches', watch_path %></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 p-3">
-                            <div class="card" style="border: none">
-                                <div class="card-body">
-                                    <%= image_tag "bag.jpg", width: 265 %>
-                                    <a class="p-2" <%= link_to 'Bags', bag_path %></a>
-                                </div>
-                            </div>
+                <div class="col-lg-4 p-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <%= image_tag "clo1.png", width: 260 %>
+                            <a class="p-2 arrow-link" href="<%= root_path %>">Clothings
+                            <i class="fa-solid fa-arrow-right px-2"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
-            <%end%>
+                <div class="col-lg-4 p-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <%= image_tag "electro.png", width: 330 %>
+                            <a class="p-2 arrow-link" href="<%= root_path%>">Electronics
+                            <i class="fa-solid fa-arrow-right px-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 p-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <%= image_tag "book.jpg", width: 180 %>
+                            
+                            <a class="p-2 arrow-link" href="<%= root_path%>">Books
+                            <i class="fa-solid fa-arrow-right px-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row mt-2 text-center" style="margin-left:0px; margin-right:0px; overflow:hidden;">
+            
+                <div class="col-lg-4 p-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <%= image_tag "shoes.avif", width: 280 %>
+                            <a class="p-2 arrow-link" href="<%= root_path%>"> Footwears
+                            <i class="fa-solid fa-arrow-right px-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 p-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <%= image_tag "watch.jpg", width: 175 %>
+                            <a class="p-2 arrow-link" href="<%= root_path%>">Watch
+                            <i class="fa-solid fa-arrow-right px-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 p-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <%= image_tag "bag.jpg", width: 265 %>
+                            <a class="p-2 arrow-link" href="<%= root_path %>">Bags
+                            <i class="fa-solid fa-arrow-right px-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                
+        </div>
+
+        <%end%>
         <% end %>
     <%end%>
 </body>
