@@ -17,8 +17,8 @@ class ProductsController < ApplicationController
   
       if @product.save
         # redirect_path = current_user.seller? ? seller_dashboard_path : @product
-        redirect_to @product, notice: 'Product was successfully created.'
-        # redirect_to redirect_path
+        # redirect_to @product, notice: 'Product was successfully created.'
+        redirect_to root_path
       else
         render :new
       end
