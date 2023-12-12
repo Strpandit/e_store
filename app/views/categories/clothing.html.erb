@@ -80,22 +80,18 @@
         <% if @products.any? %>
           <% @products.each do |product| %>
             <div class="col-lg-4 p-3">
+            <%= link_to product_path(product.id) do %>
               <div class="card" id="item1">
                 <% if product.image.attached? %>
-                  <div class="text-center">
+                  <div class="text-center", style= 'height:300px;'>
                     <%= image_tag product.image %>
                   </div>
                 <% end %>
                 <div class="card-body">
                   <h2 class="text-bold"><%= product.name %></h2>
-                  <p><%= product.description %></p>
-                  <p><strong>Price:</strong> <%= number_to_currency(product.price) %></p>
-                  <div class="card-buttons">
-                    <%= link_to 'Add to Cart', add_to_cart_path(product_id: product.id), method: :post, class: 'btn btn-add-to-cart' %>
-                    <%= link_to 'Buy Now', cart_path(@products), class: 'btn btn-buy-now' %>
-                  </div>
                 </div>
               </div>
+              <%end%>
             </div>
           <% end %>
         <% else %>

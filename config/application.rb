@@ -8,6 +8,16 @@ Bundler.require(*Rails.groups)
 
 module WebsiteCloningEcommerce
   class Application < Rails::Application
+    config.generators.template_engine = :haml
+  config.generators do |g|
+    g.template_engine :haml
+    g.test_framework :rspec
+  end
+  config.action_dispatch.default_headers['X-Frame-Options'] = "ALLOW-FROM https://res.cloudinary.com"
+  config.action_view.embed_authenticity_token_in_remote_forms = true
+
+  Mime::Type.register "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", :xlsx
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.1
 

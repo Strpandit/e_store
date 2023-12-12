@@ -25,7 +25,7 @@
 </style>
 </head>
 <body>
-<nav class="navbar navbar-expand-md navbar-light">
+<nav class="navbar navbar-expand-md navbar-light" style="border-bottom:1px solid gray;">
     <a class="navbar-brand px-5 py-0" href="#">
        <%= image_tag "ec_logo.png", width: 60 %>
     </a>
@@ -47,9 +47,6 @@
       <% end %>
       <% if user_signed_in? %>
         <% if current_user.role == "seller" %>
-          <li class="nav-item ">
-            <a class="nav-link px-3 abc" style="font-size: 20px;" <%= link_to "ADD PRODUCT", new_product_path  %> </a>
-          </li> 
           <% if !current_user.company_detail.present? %>
           <li class="nav-item">
             <a class="nav-link px-3 abc" style="font-size: 20px;" <%= link_to "ADD COMPANY", new_company_detail_path  %> </a>
@@ -60,7 +57,7 @@
             <a class="nav-link px-3 abc" style="font-size: 20px;" <%= link_to "COMPANY DETAIL", company_details_path  %> </a>
           </li>
           <% end %>
-          <li class="nav-item dropdown px-2", style="font-size:23px;">
+          <li class="nav-item dropdown px-2 mr-5", style="font-size:23px;">
           <a class="nav-link ", href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-user-circle"></i>
           </a>
@@ -136,7 +133,6 @@
       </div>
     </form>
     </li>
-
     </ul>
   </div>
 

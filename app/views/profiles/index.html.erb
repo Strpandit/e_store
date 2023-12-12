@@ -62,10 +62,10 @@
       <p><strong>Name : </strong> <%= @profile.name %></p>
       <p><strong>Gender :</strong> <%= @profile.gender %></p>
       <p><strong>Contact Number :</strong> <%= @profile.contact_number %></p>
-      <p><strong>Email :</strong> <%= current_user.email %></p>
+      <p><strong>Email :</strong> <%= current_user.email%></p>
       <p><strong>Address :</strong> <%= @profile.address %></p>
       <a href="<%= edit_profile_url(@profile) %>" class='btn btn-primary'>Edit</a>
-      <%= link_to "Change Password", edit_user_registration_path, class:'btn btn-primary' %>
+      <%= link_to "Change Password", edit_user_registration_path, class:'btn btn-outline-primary mx-2' %>
     <% end %>
 
   </div>

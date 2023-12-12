@@ -1,0 +1,10 @@
+<%= form_tag(upload_excel_products_path, multipart: true) do %>
+    <div class="form-group">
+      <%= label_tag 'excel_file', 'Select Excel File' %>
+      <%= file_field_tag 'product[excel_file]', class: 'form-control' %>
+    </div>
+  
+    <div class="form-group">
+      <%= submit_tag 'Upload Excel', class: 'btn btn-primary' %>
+    </div>
+  <% end %>
