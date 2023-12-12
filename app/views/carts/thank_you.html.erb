@@ -1,5 +1,11 @@
 <!-- app/views/carts/thank_you.html.erb -->
-<h1>Thank you for shopping with us!</h1>
 
-<p>Your invoice is ready for download:</p>
-<%= link_to 'Download Invoice',  class: 'btn btn-primary' %>
+<h1>Thank You for Your Order!</h1>
+
+<p>Your order has been confirmed successfully. Thank you for shopping with us!</p>
+
+<% if @pdf_url.present? %>
+  <%= link_to 'Download Invoice PDF', @pdf_url, class: 'btn btn-primary', target: '_blank' %>
+<% else %>
+  <p>No invoice available for download.</p>
+<% end %>

@@ -8,30 +8,30 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-electronics = Category.create(name: "Electronics")
-clothings = Category.create(name: "Clothing")
-footwears = Category.create(name: "Footwear")
-watches = Category.create(name: "Watch")
-bags = Category.create(name: "Bag")
-books = Category.create(name: "Book")
+electronics = Category.find_or_create_by(name: "Electronics")
+clothings = Category.find_or_create_by(name: "Clothing")
+footwears = Category.find_or_create_by(name: "Footwear")
+watches = Category.find_or_create_by(name: "Watch")
+bags = Category.find_or_create_by(name: "Bag")
+books = Category.find_or_create_by(name: "Book")
 
-laptops = electronics.subcategories.create(name: "Laptops")
-smartphones = electronics.subcategories.create(name: "Smartphones")
+laptops = electronics.subcategories.find_or_create_by(name: "Laptops")
+smartphones = electronics.subcategories.find_or_create_by(name: "Smartphones")
 
-shirts = clothings.subcategories.create(name: "Shirt")
-tshirts = clothings.subcategories.create(name: "Tshirt")
+shirts = clothings.subcategories.find_or_create_by(name: "Shirt")
+tshirts = clothings.subcategories.find_or_create_by(name: "Tshirt")
 
-shoes = footwears.subcategories.create(name: "Shoes")
-flip_flops = footwears.subcategories.create(name: "Flip Flops")
+shoes = footwears.subcategories.find_or_create_by(name: "Shoes")
+flip_flops = footwears.subcategories.find_or_create_by(name: "Flip Flops")
 
-digitalwatches = watches.subcategories.create(name: "Digital")
-analogwatches = watches.subcategories.create(name: "Analog")
+digitalwatches = watches.subcategories.find_or_create_by(name: "Digital")
+analogwatches = watches.subcategories.find_or_create_by(name: "Analog")
 
-handbags = bags.subcategories.create(name: "Hand Bag")
-schoolbags = bags.subcategories.create(name: "School Bag")
+handbags = bags.subcategories.find_or_create_by(name: "Hand Bag")
+schoolbags = bags.subcategories.find_or_create_by(name: "School Bag")
 
-book1 = books.subcategories.create(name: "Spritual")
-book2 = books.subcategories.create(name: "Comics")
+book1 = books.subcategories.find_or_create_by(name: "Spritual")
+book2 = books.subcategories.find_or_create_by(name: "Comics")
 
-admin = User.create(email: "admin@gmail.com", password:123456, role: "admin")
 
+admin = User.create(email: "admin@gmail.com", password:"Admin@12", role: "admin")

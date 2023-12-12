@@ -91,18 +91,7 @@
           </tr>
         <% end %>
           
-          <%  User.where(role: 'seller').map do |l| %>
-              <%= link_to(l.email, root_path(l))%>
-          <% end %> <br>
-        
-          <%  User.where(role: 'buyer').map do |l| %>
-              <%= link_to(l.email, root_path(l))%>
-          <% end %> <br>
-
-          <% User.joins(:profile).each do |user| %>
-              <%= link_to(user.email, root_path(user)) %>            
-          <% end %>
-        
+          
       </tbody>
 
 

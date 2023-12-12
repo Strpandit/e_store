@@ -18,9 +18,6 @@ class Ability
 
       cannot :manage, Cart
 
-    elsif user.admin?
-      can :manage [User, Product]
-
     else
       can :search, Product
     end
