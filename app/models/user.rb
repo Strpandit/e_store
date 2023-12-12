@@ -15,7 +15,18 @@ class User < ApplicationRecord
 
     def seller?
       role == 'seller'
+    end 
+
+    def admin?
+      role == 'admin'
     end
 
     validates :email, :role, presence: true
+    
+  #   def user_signed_in?(user)
+  #   user.current_sign_in_at.present?
+  #  end
+  scope :sellers, -> { where(role: 'seller') }
+  scope :buyers, -> { where(role: 'buyer') }
+
 end
