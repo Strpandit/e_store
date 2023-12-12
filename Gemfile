@@ -27,6 +27,13 @@ gem 'rspec-rails'
 gem 'simplecov', '0.17.0'
 gem 'rspec-sonarqube-formatter', '1.5.0'
 
+gem 'roo'
+gem 'axlsx'
+gem 'rubyXL'
+
+gem 'zip'
+gem 'rubyzip'
+
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 

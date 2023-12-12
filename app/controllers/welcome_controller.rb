@@ -7,4 +7,5 @@ class WelcomeController < ApplicationController
     @products = Product.find(params[:id])
   end
   
+
 end

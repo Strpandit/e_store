@@ -41,4 +41,8 @@ class CategoriesController < ApplicationController
       @products = @category.products
     end
 
+    def cproduct
+      @category = Category.find_by(id: params[:id])
+      @products = @category.products
+    end
 end
