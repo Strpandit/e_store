@@ -24,7 +24,17 @@ Rails.application.routes.draw do
   get 'get_sub_category', to: "categories#get_sub_category"
 
   resources :profiles
+  resources :user_addresses do
+    member do
+      patch 'set_default'
+      patch 'set_primary'
+    end
+  end
 
+  # resources :user_addresses 
+  delete 'user_addresses/:id', to: 'user_addresses#destroy', as: 'delete_user_addresses'
+ 
+  
   resources :company_details
   delete 'companies_details/:id', to: 'company_details#destroy', as: 'delete_companies_details'
 end

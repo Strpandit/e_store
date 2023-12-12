@@ -10,6 +10,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300&display=swap" rel="stylesheet">
+
+      <%# <!-- Compiled and minified CSS -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+      <!-- Compiled and minified JavaScript -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+              %>
 <style>
 .bcg a:hover {
   background-color: red; 
@@ -22,6 +29,61 @@
   text-decoration: none;
   border-radius: 12px;
 }
+
+
+/* .active-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 80%;
+  /* Additional styles for the active dot */
+/* } */
+
+/* .inactive-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%; */
+  /* Additional styles for the inactive dot */
+/* } */
+
+
+.user {
+  position: relative;
+  /* Additional styles for the user container */
+}
+
+.user-icon {
+  /* Position your user icon */
+}
+
+.dot-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.active-dot, .inactive-dot {
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  /* Adjust these values as needed to position the dots */
+}
+
+.active-dot {
+  background-color: green;
+  border-radius: 80%;
+margin-top: -28px;
+
+margin-left: 15px;  /* Additional styles for the active dot */
+}
+
+.inactive-dot {
+  background-color: red;
+  border-radius: 50%;
+  /* Additional styles for the inactive dot */
+}
+
+
 </style>
 </head>
 <body>
@@ -46,7 +108,14 @@
         </li>
       <% end %>
       <% if user_signed_in? %>
+    
+              
+
         <% if current_user.role == "seller" %>
+ 
+      
+
+
           <li class="nav-item ">
             <a class="nav-link px-3 abc" style="font-size: 20px;" <%= link_to "ADD PRODUCT", new_product_path  %> </a>
           </li> 
@@ -62,7 +131,17 @@
           <% end %>
           <li class="nav-item dropdown px-2", style="font-size:23px;">
           <a class="nav-link ", href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-user-circle"></i>
+            <i class="fas fa-user-circle">
+            
+                <div class="user">
+
+    <% unless current_user.active? %>
+      <div class="active-dot" style="background-color: green;"></div>
+    <% else %>
+      <div class="inactive-dot" style="background-color: red;"></div>
+    <% end %>
+  </div>
+            </i>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <% unless current_user.profile.present?  %>
@@ -70,17 +149,18 @@
           <%else%>
             <span class="dropdown-item-text"><%= current_user.profile.name %></span>
           <%end%>
-            <% unless current_user.profile.present?  %>
-            <%= link_to 'Update Profile', new_profile_path, class: 'px-3' %></br>
-            <%else%>
+          <% unless current_user.profile.present?  %>
+            <%= link_to 'Add Profile', new_profile_path, class: 'px-3' %></br>
+          <%else%>
             <%= link_to 'Profile', profiles_path, class: 'px-3' %></br>
-            <%end%>
-
+          <%end%>
             <%= link_to "Log Out", destroy_user_session_path, data: { "turbo-method": :delete },class: 'px-3'  %>
           </div>
           </li>
         <% end %>
         <% if current_user.role == "buyer" %>
+
+
         <li class="nav-item ">
         <a class="nav-link px-3 abc" style="font-size: 20px;" <%= link_to 'PRODUCTS', products_path %> </a>
         </li>
@@ -104,7 +184,16 @@
 
         <li class="nav-item dropdown px-2", style="font-size:23px;">
           <a class="nav-link ", href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-user-circle"></i>
+            <i class="fas fa-user-circle">
+              <div class="user">
+   
+    <% unless current_user.active? %>
+      <div class="active-dot" style="background-color: green;"></div>
+    <% else %>
+      <div class="inactive-dot" style="background-color: red;"></div>
+    <% end %>
+  </div>
+            </i>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <% unless current_user.profile.present?  %>
@@ -113,10 +202,13 @@
             <span class="dropdown-item-text"><%= current_user.profile.name %></span>
             <%end%>
             <% unless current_user.profile.present?  %>
-            <%= link_to 'Update Profile', new_profile_path, class: 'px-3' %></br>
+            <%= link_to 'Add Profile', new_profile_path, class: 'px-3' %></br>
             <%else%>
-            <%= link_to 'Profile', profiles_path, class: 'px-3' %></br>
+            <%= link_to 'Profile', profiles_url, class: 'px-3' %></br>
             <%end%>
+              <% if current_user.present?  %>
+               <%= link_to 'Addresses', user_addresses_path(current_user),class: 'px-3' %></br>
+               <%end%>
             <%= link_to "Log Out", destroy_user_session_path, data: { "turbo-method": :delete },class: 'px-3'  %>
         </div>
         </li>
