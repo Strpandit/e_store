@@ -16,7 +16,7 @@ class CartProductsController < ApplicationController
     if @cart_product.new_record?
       @cart_product.quantity = 1
     else
-      @cart_product.quantity += 1
+      @cart_product.quantity
     end
     if @cart_product.save
       redirect_to cart_products_path, notice: 'Product added to cart!'
@@ -24,6 +24,46 @@ class CartProductsController < ApplicationController
       redirect_to root_path, alert: 'Failed to add product to cart!'
     end
   end
+
+
+  def update
+    
+    @cart_product = CartProduct.find(params[:id])
+    # quantity = @cart_product.quantity
+
+    if params[:adjust] == "+"
+      @cart_product.quantity += 1
+      
+    elsif params[:adjust] == "-" && @cart_product.quantity > 1
+      @cart_product.quantity -= 1
+     
+
+    end
+
+   
+    if @cart_product.save
+      # Handle successful quantity update
+      flash[:success] = "Quantity updated successfully."  
+    else
+      # Handle errors if the quantity update fails
+      flash[:error] = "Failed to update quantity."
+    end
+    redirect_to cart_products_path
+  end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   def destroy
     @cart_product = current_user.cart.cart_products.find_by(id: params[:id])

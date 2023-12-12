@@ -1,40 +1,64 @@
-<h1 class='text-center text-uppercase text-secondary'><b>My Cart Products</b></h1>
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-lg-12 text-center border rounded bg-light my-5">
-      <% if @cart_products.present? %>
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">Product</th>
-              <th scope="col">Product Id</th>
-              <th scope="col">Quantity</th>
-              <th scope="col">Price</th>
-              <th scope="col">Total Price</th>
-              <th scope="col">Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @cart_products.each do |cart_product| %>
-              <tr>
-                <td><%= cart_product.product.name %></td>
-                <td><%= cart_product.product.id %></td>
-                <td><%= cart_product.quantity %></td>
-                <td><%= number_to_currency(cart_product.product.price) %></td>
-                <td><%= number_to_currency(cart_product.product.price * cart_product.quantity )%></td>
-                <td><%= link_to 'Remove', cart_product_path(cart_product), data: {
-                  turbo_method: :delete,
-                  turbo_confirm: "Are you sure?"
-                } %></td>
-              </tr>
-            <% end %>
-            </tbody>
-            </table>
-            <%= link_to 'Go To Product', cart_path(@cart_products), class: 'btn btn-primary' %>
-      <% else %>
-        <p>Your cart is empty.</p>
+<h1 class='text-center text-uppercase text-secondary mb-4'><b>My Cart Products</b></h1>
+
+<% @cart_products.each do |cartproduct| %>
+  <div class="row" style="border-bottom: 1px solid #ccc; padding-bottom: 10px; margin-bottom: 10px;">
+    
+      <div class="col-md-2">
+      
+      </div>
+        
+  
+    <% if cartproduct.product.image.attached? %>
+      <div class="col-md-2">
+        <%= image_tag cartproduct.product.image, class: 'product-image img-fluid' %>
+      </div>
+    <% end %>
+    <div class="col-md-6">
+    <% if cartproduct.product.image.attached? %>
+    <h2><%= cartproduct.product.name %></h2>
+    <p><%= cartproduct.product.description %></p>
+    <p> <b><%= number_to_currency(cartproduct.product.price * cartproduct.quantity  ) %> </b></p>
+
+    
+    <div class="quantity-section">
+      <div class="quantity-control">
+        <%= form_tag cart_product_path(cartproduct), method: :patch, remote: true do %>
+           <%= hidden_field_tag :quantity, cartproduct.quantity %>
+          <%= submit_tag "-", class: "quantity-adjust", name: "adjust", value: "-", data: { turbo_disable_with: "-" } %>
+          <span class="current-quantity" ><%= cartproduct.quantity %></span>
+          <%= submit_tag "+", class: "quantity-adjust", name: "adjust", value: "+", data: { turbo_disable_with: "+" } %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="button-group">
+      <%= link_to cart_product_path(cartproduct), data: {
+        turbo_method: :delete,
+        turbo_confirm: "Are you sure you want to remove this item?"
+      } do %>
+        <b>REMOVE</b>
       <% end %>
     </div>
+    
+  <% else %>
+    <!-- Handle the case when the image is not attached -->
+  <% end %>
+</div>
+
   </div>
+<% end %>
+<div class="row">
+  <div class="col-lg-12 text-center "><%= link_to 'Order Now', cart_path(@cart_products), class: 'btn btn-primary' %>
+  </div>
+  <div>  <%= link_to 'BACK', products_path, class: 'btn btn-primary' %>
+  </div>
+
+</div>
+
+<script>
+   
+</script>
+
   <%= link_to 'BACK', :back, class: 'btn btn-primary' %>
 </div>
+

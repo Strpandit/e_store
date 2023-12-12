@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   # get 'products/:id', to: "products#show", as: 'show_product'
 
   resources :carts
+  resources :products
   resources :cart_products
   resources :categories
   get 'get_sub_category', to: "categories#get_sub_category"
@@ -43,5 +44,20 @@ Rails.application.routes.draw do
   
   resources :company_details
   delete 'companies_details/:id', to: 'company_details#destroy', as: 'delete_companies_details'
+
+
+  resources :carts  do
+    member do
+      get 'confirm_destroy', to: 'carts#confirm_destroy'
+      get 'generate_pdf', to: 'carts#generate_pdf'
+      get 'pdf_view' , to: 'carts#pdf_view'
+    end
+  end
+  resources :carts do
+    get 'thank_you', on: :collection
+    get 'generate_and_send_cart_pdf', on: :member
+  end
+
+
 end
   

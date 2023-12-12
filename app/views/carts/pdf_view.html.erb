@@ -1,0 +1,32 @@
+<h1 class='text-center text-uppercase text-secondary'><b>My Shopping Order</b></h1>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-12 text-center border rounded bg-light my-5">
+
+      <table class='table'>
+        <thead>
+          <tr>
+            <th scope="col">Product</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Price</th>
+          </tr>
+          # <h1>-------------------------------------------------------------------------------</h1>
+        </thead>
+        <tbody>
+          <% @cart_products.each do |cart_item| %>
+            <tr>
+              <td><%= cart_item.product.name %></td>
+              <td><%= cart_item.quantity %></td>
+              <td><%= cart_item.product.price * cart_item.quantity %></td>
+            </tr>
+          <% end %>
+          <!-- Add more rows as needed -->
+        </tbody>
+      </table>
+      <b><p class='fs-4'>Total Amount: <%= number_to_currency(@cart_products.sum { |cart_item| cart_item.product.price * cart_item.quantity }) %></p></b>
+
+      
+    </div>
+  </div>
+</div>
