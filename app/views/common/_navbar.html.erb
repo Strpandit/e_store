@@ -99,7 +99,52 @@
           </div>
         </li>
         <li class="nav-item px-2 mt-2", style="font-size:23px;">
-           <%= link_to '', cart_products_path, class:"fa-solid fa-cart-shopping" %>
+            
+
+
+
+              <% if current_user_cart_products_count > 0 %>
+              <%= link_to cart_path(current_user.cart) do %> 
+                <div style="position: relative; display: inline-block;">
+                  <i class="fa fa-shopping-cart" style="vertical-align: middle;"></i>
+                  <span style="position: absolute; left: 11px; top: 7px; text-align: center; border-radius: 7px; width: 18px; height: 18px; background-color: #ff6161; border: 1px solid #fff; font-weight: 400; color: #f0f0f0; line-height: 16px; font-size: 12px;">
+                    <%= current_user_cart_products_count %>
+                  </span>
+                </div>
+              <% end %>
+            <% else %>
+              <a href="#" class="menu-cart">
+                <i class="fa fa-shopping-cart"></i> 0
+              </a>
+            <% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+
+
+
+
+
+
+
+           
+
+
+
+
         </li>
 
         <li class="nav-item dropdown px-2", style="font-size:23px;">

@@ -11,6 +11,7 @@ class Ability
     elsif user.seller?
       can :manage, Product, user_id: user.id
       cannot :search, Product
+      # can :manage, Product
       cannot :manage, Cart
     else
       can :search, Product

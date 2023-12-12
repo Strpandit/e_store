@@ -74,3 +74,10 @@ gem 'devise'
 # Gemfile
 gem 'cancancan', '~> 3.1'
 
+
+gem 'pdfkit'
+gem 'jquery-rails'
+gem 'bootstrap', '~> 4.1.3'
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
+gem 'jquery-rails'
