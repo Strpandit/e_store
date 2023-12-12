@@ -51,7 +51,7 @@
 </head>
 <body style="font-family: 'Mukta', sans-serif;">
 <h1 class='bg-warning my-4 py-2 text-light' style="font-weight:bold;">Company Detail</h1>
-<div class="container">
+<div class="container-fluid">
 <table class="table">
   <tr style="background-color: #F2F2F2;">
     <th scope="col" style="border-bottom: 1px solid #DEE2E6;">Company Name</th>
@@ -63,15 +63,15 @@
 
   <% if current_user.company_detail.present? %>
     <tr>
-      <td class="pt-5"><%= @company_detail.company_name %></td>
-      <td class="pt-5"><%= @company_detail.company_email %></td>
-      <td class="pt-5"><%=@company_detail.company_phone %></td>
-      <td class="pt-5"><%= @company_detail.company_address%></td>
+      <td class="pt-4"><%= @company_detail.company_name %></td>
+      <td class="pt-4"><%= @company_detail.company_email %></td>
+      <td class="pt-4"><%=@company_detail.company_phone %></td>
+      <td class="pt-4"><%= @company_detail.company_address%></td>
       
       <td>
       
-        <%= link_to "Edit",  edit_company_detail_path(@company_detail), class:'btn btn-primary px-4 my-2' %>
-        <%= button_to 'Delete', delete_companies_details_path(@company_detail), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, method: :delete, class:'btn btn-danger px-3 my-2' %>
+        <%= link_to "Edit",  edit_company_detail_path(@company_detail), class:'btn btn-primary px-4 m-2' %>
+        <%= link_to 'Delete', delete_companies_details_path(@company_detail), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, method: :delete, class:'btn btn-danger px-3 my-2' %>
       </td>
     </tr>
   <%end%>

@@ -5,6 +5,11 @@ Rails.application.routes.draw do
   resources :products do
     collection do
       get 'search'
+      # get 'upload_excel' # Form for uploading Excel sheet
+      # post 'upload_excel' # Handle Excel sheet upload
+      # get 'download_excel'
+
+      post :import
     end
   end
   get 'add_to_cart/:product_id', to: 'cart_products#new', as: 'add_to_cart'
@@ -17,6 +22,7 @@ Rails.application.routes.draw do
   get 'bag', to: "categories#bag", as: 'bag'
   get 'footwear', to: "categories#footwear", as: 'footwear'
   get 'book', to: "categories#book", as: 'book'
+  # get 'products/:id', to: "products#show", as: 'show_product'
 
   resources :carts
   resources :products
@@ -25,7 +31,17 @@ Rails.application.routes.draw do
   get 'get_sub_category', to: "categories#get_sub_category"
 
   resources :profiles
+  resources :user_addresses do
+    member do
+      patch 'set_default'
+      patch 'set_primary'
+    end
+  end
 
+  # resources :user_addresses 
+  delete 'user_addresses/:id', to: 'user_addresses#destroy', as: 'delete_user_addresses'
+ 
+  
   resources :company_details
   delete 'companies_details/:id', to: 'company_details#destroy', as: 'delete_companies_details'
 

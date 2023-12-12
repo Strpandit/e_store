@@ -1,4 +1,3 @@
-
 class ApplicationController < ActionController::Base
     before_action :configure_permitted_parameters, if: :devise_controller?
 
@@ -14,6 +13,8 @@ class ApplicationController < ActionController::Base
         root_path
       elsif resource.buyer?
         products_path
+      elsif resource.admin?
+        root_path
       else
         super
       end

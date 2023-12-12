@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            /* color: #495057; */
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            background-color: #F8F9FA;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 50px 0;
+            padding: 20px 0;
+        }
+        .product-image {
+            flex: 1;
+            margin-right: 20px;
+        }
+        .product-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .product-details {
+            border-radius: 8px;
+            padding: 10px;
+        }
+        h1 {
+            color: black;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        .product-description {
+            margin-bottom: 20px;
+        }
+        .size-options {
+            margin-bottom: 20px;
+            width: max-content;
+        }
+        label {
+            margin-right: 10px;
+            font-size: 14px;
+        }
+
+        .pricing {
+            display: flex;
+            /* justify-content: space-between; */
+            align-items: baseline;
+        }
+        .price,
+        .discounted-price,
+        .discount-percent {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .price {
+            text-decoration: line-through;
+            color: #999;
+        }
+        .discounted-price {
+            color: #007BFF;
+            margin-left: 10px;
+        }
+        .discount-percent {
+            color: #28A745;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+<% if @product.present? %>
+        <% if @product.image.attached? %>
+            <div class="product-image text-center">
+                <%= image_tag @product.image %>
+            </div>
+        <% end %>
+        <div class="product-details">
+            <h1 class="text-bold"><%= @product.name %></h1>
+            <p class="product-description"  style="font-family: 'Nanum Myeongjo', serif;"><%= @product.description %></p>
+            <p class="pricing">
+                <span class="discounted-price" style="font-weight: bold; color: black;">₹ <%= @product.price %></span>
+                <span class="price mx-2"><strong>Price:</strong>₹ 499</span>
+                <span class="discount-percent">63% OFF</span>
+                </p>
+                <p style="font-family: 'Nanum Myeongjo', serif;">inclusive of all taxes</p>
+        
+            <div class="card-buttons">
+                <%= link_to 'Add to Cart', add_to_cart_path(product_id: @product.id), method: :post, class: 'btn btn-warning mx-2 text-white' %>
+                <%= link_to 'Buy Now', cart_path(@product), class: 'btn btn-primary' %>
+            </div>
+        </div>
+        <% end %>
+    </div>
+</body>
+</html>
