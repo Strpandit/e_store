@@ -8,6 +8,13 @@ class User < ApplicationRecord
     # has_many :cart_products
     has_one :company_detail
     has_one :profile
+    has_many :user_addresses
+
+    def active?
+      last_login_at.present? && last_login_at >= 30.days.ago
+    end
+  
+ 
     
     def buyer?
       role == 'buyer'
@@ -22,10 +29,11 @@ class User < ApplicationRecord
     end
 
     validates :email, :role, presence: true
-    
-  #   def user_signed_in?(user)
-  #   user.current_sign_in_at.present?
-  #  end
+
+    def default_address
+      user_addresses.find_by(is_default: true)
+    end
+
   scope :sellers, -> { where(role: 'seller') }
   scope :buyers, -> { where(role: 'buyer') }
 

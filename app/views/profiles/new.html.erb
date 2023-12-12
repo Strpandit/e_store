@@ -7,7 +7,7 @@
         <%= form_with(model: @profile, local: true) do |form| %>
             <% if @profile.errors.any? %>
               <div id="error_explanation">
-                <h2><%= pluralize(@profile.errors.count, 'error') %> prohibited this company_detail_pah from being saved:</h2>
+                <h2><%= pluralize(@profile.errors.count, 'error') %> prohibited this profile from being saved:</h2>
                 <ul>
                   <% @profile.errors.full_messages.each do |message| %>
                     <li><%= message %></li>
@@ -15,22 +15,23 @@
                 </ul>
               </div>
             <% end %>
+              <div class="form-group">
+                  <%= form.label :name, "User Name <span class='text-danger'>*</span>".html_safe %>
+                  <%= form.text_field :name, class: "form-control", required: true %>
+              </div>
+
             <div class="form-group">
-              <%= form.label :User_Name %>
-              <%= form.text_field :name,  class: "form-control"%>
-            </div>
-            <div class="form-group">
-              <%= form.label :Gender%>
+              <%= form.label :gender, "Gender <span class='text-danger'>*</span>".html_safe%>
               <%# <%= form.select :profile_gender, ['Male', 'Female'], prompt: 'Select gender', class: "form-control" %>
-              <%= form.select :gender, [['Male', :male], ['Female', :female]] %>
+              <%= form.select :gender, [['Male', :male], ['Female', :female]] , required: true %>
             </div>
             <div class="form-group">
-              <%= form.label :Contact_Number %>
-              <%= form.number_field :contact_number, class: "form-control" %>
+              <%= form.label :contact_number,"Contact Number <span class='text-danger'>*</span>".html_safe%>
+              <%= form.number_field :contact_number, class: "form-control", required: true %>
             </div>
                <div class="form-group">
-              <%= form.label :Address%>
-              <%= form.text_area :address, class: "form-control" %>
+              <%= form.label :address, "Address <span class='text-danger'>*</span>".html_safe%>
+              <%= form.text_area :address, class: "form-control", required: true %>
             </div>
             <div class="form-group text-center">
               <%= form.submit "ADD PROFILE", class: "btn btn-primary"%>

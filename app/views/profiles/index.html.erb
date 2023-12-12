@@ -12,14 +12,14 @@
     body {
         margin:auto;
       font-family: Arial, sans-serif;
-      background-color: #F5F5F5; /* Set a light background color for the entire page */
-      /* display: flex; */
+      background-color: #F5F5F5; 
+    
       align-items: center;
       justify-content: center;
       /* height: 100vh; */
     }
     .form_container {
-      background-color: #FFFFFF; /* Set a white background color for the form container */
+      background-color: ; /* Set a white background color for the form container */
       width: 800px;
       padding: 20px; /* Add padding to the form container */
       border-radius: 8px; /* Add rounded corners to the form container */
@@ -51,19 +51,25 @@
         font-size:44px;
         font-weight: bold;
     }
+
+    p{
+      font-size:20px;
+    }
   </style>
 </head>
 <body>
-  <div class="form_container ", style='margin:0px 500px;'>
-  <h1 style=' font-weight:bold;'>User Information</h1>
-  <hr>
+<div class="form_container ", style='margin:0px 500px; '>
+  <div class="font-weight-bold bg-info text-white">
+<h1 >User Information</h1>
+</div>
+ 
 
     <% if current_user.profile.present? %>
-      <p><strong>Name : </strong> <%= @profile.name %></p>
+    <p><strong>Name : </strong> <%= @profile.name %></p>
       <p><strong>Gender :</strong> <%= @profile.gender %></p>
       <p><strong>Contact Number :</strong> <%= @profile.contact_number %></p>
       <p><strong>Email :</strong> <%= current_user.email %></p>
-      <p><strong>Address :</strong> <%= @profile.address %></p>
+      <p><strong>Address :</strong> <%= @profile.address %></p><br>
       <a href="<%= edit_profile_url(@profile) %>" class='btn btn-primary'>Edit</a>
       <%= link_to "Change Password", edit_user_registration_path, class:'btn btn-primary' %>
     <% end %>
