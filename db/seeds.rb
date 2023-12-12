@@ -32,3 +32,6 @@ schoolbags = bags.subcategories.create(name: "School Bag")
 
 book1 = books.subcategories.create(name: "Spritual")
 book2 = books.subcategories.create(name: "Comics")
+
+admin = User.create(email: "admin@gmail.com", password:123456, role: "admin")
+

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <!-- Include Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 20px auto;
+      background-color: #fff;
+      padding: 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+
+    
+      
+    h1 {
+      color: #333;
+      text-align: center;
+      font-size: 36px; 
+      margin-bottom: 30px; 
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: bold; 
+    }
+
+    h3 {
+      color: #555;
+      margin-top: 20px;
+    }
+
+    table {
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    thead {
+      background-color: #f8f8f8;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    tr:hover {
+      background-color: #f5f5f5;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Admin Dashboard</h1>
+
+    <h3>User Table</h3>
+    <table class="table table-bordered">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Email</th>
+          <th scope="col">Role</th>
+        <th scope="col">Status</th>
+
+
+          
+        </tr>
+      </thead>
+      <tbody>
+        <% User.all.each do |user| %>
+          <tr>
+            <td><%= user.id %></td>
+            <td><%= user.email %></td>
+             <td><%= user.role %></td>
+                <td style="color: <%= user == current_user ? 'green' : 'red' %>;">
+                <%= user == current_user ? 'Active' : 'Inactive' %>
+                </td>
+            
+          </tr>
+        <% end %>
+          
+          <%  User.where(role: 'seller').map do |l| %>
+              <%= link_to(l.email, root_path(l))%>
+          <% end %> <br>
+        
+          <%  User.where(role: 'buyer').map do |l| %>
+              <%= link_to(l.email, root_path(l))%>
+          <% end %> <br>
+
+          <% User.joins(:profile).each do |user| %>
+              <%= link_to(user.email, root_path(user)) %>            
+          <% end %>
+        
+      </tbody>
+
+
+    </table>
+
+    <h3>Profile Table</h3>
+    <table class="table table-bordered">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Name</th>
+         <th scope="col">Gender</th>
+         <th scope="col">Contact_number</th>
+         <th scope="col">Address</th>
+
+
+
+          
+        </tr>
+      </thead>
+      <tbody>
+        <% Profile.all.each do |profile| %>
+          <tr>
+            <td><%= profile.id %></td>
+            <td><%= profile.name %></td>
+            <td><%= profile.gender %></td>
+            <td><%= profile.contact_number %></td>
+            <td><%= profile.address%></td>
+
+
+
+            
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <h3>Product Table</h3>
+    <table class="table table-bordered">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Name</th>
+           <th scope="col">Description</th>
+            <th scope="col">Price</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        <% Product.all.each do |product| %>
+          <tr>
+            <td><%= product.id %></td>
+            <td><%= product.name %></td>
+            <td><%= product.description%></td>
+            <td><%= product.price %></td>
+
+            <!-- Add more columns as needed -->
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <h3>Company Detail Table</h3>
+    <table class="table table-bordered">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Name</th>
+         <th scope="col">Email</th>
+        <th scope="col">Contact_number</th>
+        <th scope="col">Address</th>
+
+
+
+          <!-- Add more columns as needed -->
+        </tr>
+      </thead>
+      <tbody>
+        <% CompanyDetail.all.each do |company_detail| %>
+          <tr>
+            <td><%= company_detail.id %></td>
+            <td><%= company_detail.company_name%></td>
+            <td><%= company_detail.company_email%></td>
+            <td><%= company_detail.company_phone%></td>
+             <td><%= company_detail.company_address%></td>
+
+
+
+
+
+            <!-- Add more columns as needed -->
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Include Bootstrap JS and Popper.js -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
