@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_07_094719) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_11_123117) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -106,6 +106,22 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_07_094719) do
     t.index ["category_id"], name: "index_subcategories_on_category_id"
   end
 
+  create_table "user_addresses", force: :cascade do |t|
+    t.string "address_name"
+    t.integer "address_contact_number"
+    t.integer "pincode"
+    t.string "state"
+    t.text "address"
+    t.string "locality"
+    t.string "city"
+    t.boolean "is_default", limit: 1, default: false
+    t.boolean "is_primary", default: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_addresses_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -115,6 +131,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_07_094719) do
     t.string "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "last_login_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -130,4 +147,5 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_07_094719) do
   add_foreign_key "products", "users"
   add_foreign_key "profiles", "users"
   add_foreign_key "subcategories", "categories"
+  add_foreign_key "user_addresses", "users"
 end

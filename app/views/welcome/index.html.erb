@@ -100,6 +100,9 @@
 <body style="font-family: 'Mukta', sans-serif;">
 
 <% if !user_signed_in? ||  current_user.role == "buyer" %>
+
+<% if !user_signed_in? || current_user.role == 'buyer'%>
+
     <div id="carouselExample" class="carousel slide">
         <div class="carousel-inner">
         <div class="carousel-item active">
@@ -318,8 +321,16 @@
     </div>
 
     <%end%>
+
 <%end%>
 
     
+
+<% end%>
+
+    <% if user_signed_in? && current_user.role == "admin"%>
+        <%= render 'admin' %>
+    <%end%>
+
 </body>
 </html>
