@@ -32,7 +32,6 @@ class User < ApplicationRecord
       role == 'admin'
     end
 
-    validates :password, length: { minimum: 8, maximum: 8} 
     validate :password_complexity
     validates :email, :role, presence: true
 

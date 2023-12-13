@@ -2,9 +2,7 @@ class CartsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_cart, only: [:show, :pdf_view]
   
-
   include UserAddressesHelper
-
 
   def show
     @cart = current_user.cart
@@ -25,13 +23,14 @@ class CartsController < ApplicationController
 
       # send_data(pdf, filename: 'invoice.pdf', type: 'application/pdf', disposition: 'attachment') # Download invoice
 
-      @cart.destroy # Destroy cart data after invoice sent
+      @cart.destroy 
+      # Destroy cart data after invoice sent
       redirect_to thank_you_cart_path, notice: 'Order Confirmed Successfully'
     else
       redirect_to products_path, notice: 'Cart not found'
     end
   end
-
+  
   def pdf_view(cart)
     @cart_products = cart.cart_products.includes(:product)
   end
@@ -43,6 +42,7 @@ class CartsController < ApplicationController
   def generate_and_send_cart_pdf(cart)
     pdf_view(@cart)
     pdf_html = render_to_string(template: 'carts/pdf_view', layout: 'pdf_layout', locals: { cart: cart })
+
     PDFKit.new(pdf_html).to_pdf
    
   end

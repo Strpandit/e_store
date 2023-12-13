@@ -53,11 +53,11 @@ Rails.application.routes.draw do
       get 'thank_you', to: 'carts#thank_you'
     end
   end
+
   resources :carts do
     get 'thank_you', on: :collection
-    get 'generate_and_send_cart_pdf', on: :member
+    get 'generate_and_send_pdf', on: :member   
   end
-
 
 end
   

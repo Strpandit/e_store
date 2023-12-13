@@ -105,7 +105,7 @@
         
             <div class="card-buttons">
                 <%= link_to 'Add to Cart', add_to_cart_path(product_id: @product.id), method: :post, class: 'btn btn-warning mx-2 text-white' %>
-                <%= link_to 'Buy Now', cart_path(@product), class: 'btn btn-primary' %>
+                <%= link_to 'Buy Now', add_to_cart_path(product_id: @product.id), class: 'btn btn-primary' %>
             </div>
         </div>
         <% end %>

@@ -300,9 +300,10 @@
     </div>
     <%end%>
 <%end%>
+  
 <% if user_signed_in? && current_user.role == 'admin'%>
  <%= render 'admin' %>
  <%end%>
-
+              
 </body>
 </html>
