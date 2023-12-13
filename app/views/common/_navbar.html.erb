@@ -108,14 +108,7 @@ margin-left: 15px;  /* Additional styles for the active dot */
         </li>
       <% end %>
       <% if user_signed_in? %>
-    
-              
-
         <% if current_user.role == "seller" %>      
-
-
-
-
           <% if !current_user.company_detail.present? %>
           <li class="nav-item">
             <a class="nav-link px-3 abc" style="font-size: 20px;" <%= link_to "ADD COMPANY", new_company_detail_path  %> </a>
@@ -194,34 +187,6 @@ margin-left: 15px;  /* Additional styles for the active dot */
                 <i class="fa fa-shopping-cart"></i> 0
               </a>
             <% end %>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            
-
-
-
-
-
-
-
-           
-
-
-
-
         </li>
 
         <li class="nav-item dropdown px-2", style="font-size:23px;">

@@ -38,7 +38,7 @@ Rails.application.routes.draw do
     end
   end
 
-  # resources :user_addresses 
+ 
   delete 'user_addresses/:id', to: 'user_addresses#destroy', as: 'delete_user_addresses'
  
   
@@ -48,26 +48,16 @@ Rails.application.routes.draw do
 
   resources :carts  do
     member do
-      get 'confirm_destroy', to: 'carts#confirm_destroy'
       get 'generate_pdf', to: 'carts#generate_pdf'
       get 'pdf_view' , to: 'carts#pdf_view'
-      # get 'thank_you', to: 'carts#thank_you'
+      get 'thank_you', to: 'carts#thank_you'
     end
   end
-  # resources :carts do
-  #   get 'generate_and_send_cart_pdf', on: :member
-  # end
-  # get 'carts/invoice', to: 'carts#invoice', as: 'generate_pdf' 
-  # config/routes.rb
 
   resources :carts do
-    get 'thank_you', on: :member
-    get 'generate_and_send_pdf', on: :collection   
+    get 'thank_you', on: :collection
+    get 'generate_and_send_pdf', on: :member   
   end
-  resources :cart_contents
-
-# get "/tmp/cart_contents20231212-17897-qu8e1j.pdf", to: 'carts#thank_you'
-
 
 end
   

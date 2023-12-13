@@ -33,5 +33,4 @@ schoolbags = bags.subcategories.find_or_create_by(name: "School Bag")
 book1 = books.subcategories.find_or_create_by(name: "Spritual")
 book2 = books.subcategories.find_or_create_by(name: "Comics")
 
-
 admin = User.create(email: "admin@gmail.com", password:"Admin@12", role: "admin")
