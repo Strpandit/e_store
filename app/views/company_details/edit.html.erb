@@ -55,15 +55,22 @@
 <body>
 
 <div class="form-container">
-  <h3>Update Company Details</h3>
+
+  <h3 class="fw-bold ">Update Company Details</h3>
+
+  <hr class="bg-warning">
   <%= form_with model: @company_detail do |form| %><br>
-    <%= form.text_field :company_name, placeholder: :Company_Name, class: "form-control"%><br><br>
-    <%= form.text_field :company_email, placeholder: :Company_Email, class: "form-control"%><br><br>
-    <%= form.number_field :company_phone, placeholder: :Company_Address, class: "form-control"%><br><br>
-    <%= form.text_area :company_address, placeholder: :Company_Phone, class: "form-control"%><br><br>
+  <strong><%= form.label :Company_Name %></strong>
+    <%= form.text_field :company_name, placeholder: :Company_Name, class: "form-control"%><br>
+    <strong><%= form.label :Email %></strong>
+    <%= form.text_field :company_email, placeholder: :Company_Email, class: "form-control"%><br>
+    <strong><%= form.label :Contact_Number%></strong>
+    <%= form.number_field :company_phone, placeholder: :Company_Address, class: "form-control"%><br>
+    <strong><%= form.label :Address %></strong>
+    <%= form.text_area :company_address, placeholder: :Company_Phone, class: "form-control"%><br><br><br>
     
    
-    <%= form.submit "Update Details",class: "form-control" %>
+    <%= form.submit "Update Details",class: "form-control fw-bold btn-success" %>
   <% end %>
 </div>
 
