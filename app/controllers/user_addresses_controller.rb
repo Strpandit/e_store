@@ -2,6 +2,7 @@ class UserAddressesController < ApplicationController
     before_action :authenticate_user!
     before_action :set_address, only: [:show, :edit, :update, :destroy, :set_default, :set_primary]
 
+    include UserAddressesHelper
 
 
     def index

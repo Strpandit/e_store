@@ -38,7 +38,7 @@ Rails.application.routes.draw do
     end
   end
 
-  # resources :user_addresses 
+ 
   delete 'user_addresses/:id', to: 'user_addresses#destroy', as: 'delete_user_addresses'
  
   
@@ -48,9 +48,9 @@ Rails.application.routes.draw do
 
   resources :carts  do
     member do
-      get 'confirm_destroy', to: 'carts#confirm_destroy'
       get 'generate_pdf', to: 'carts#generate_pdf'
       get 'pdf_view' , to: 'carts#pdf_view'
+      get 'thank_you', to: 'carts#thank_you'
     end
   end
   resources :carts do

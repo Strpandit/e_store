@@ -1,5 +1,8 @@
-<!-- app/views/carts/thank_you.html.erb -->
-<h1>Thank you for shopping with us!</h1>
+<div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+  <div style="text-align: center; padding: 20px; border: 1px solid #ccc; border-radius: 8px; background-color: #f9f9f9;">
+    <h1>Thank you for shopping with us!</h1>
+    <p>Your invoice is ready for download:</p>
+    <%= link_to 'Download Invoice', '#', class: 'btn btn-primary' %>
+  </div>
+</div>
 
-<p>Your invoice is ready for download:</p>
-<%= link_to 'Download Invoice',  class: 'btn btn-primary' %>

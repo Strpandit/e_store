@@ -61,8 +61,6 @@
             <div class="card-body" style="font-size: 1rem;">
               <% if address.is_default %>
                 <p><b>Default: </b><%= address.address_name %></p>
-                <%elsif address.is_primary%>
-                    <p><b>Primary: </b><%= address.address_name %></p>
                     <%else%>
                     <p><%= address.address_name %></p>
               <% end %>

@@ -114,10 +114,6 @@ margin-left: 15px;  /* Additional styles for the active dot */
         <% if current_user.role == "seller" %>      
 
 
-          <li class="nav-item ">
-            <a class="nav-link px-3 abc" style="font-size: 20px;" <%= link_to "ADD PRODUCT", new_product_path  %> </a>
-          </li> 
-
           <% if !current_user.company_detail.present? %>
           <li class="nav-item">
             <a class="nav-link px-3 abc" style="font-size: 20px;" <%= link_to "ADD COMPANY", new_company_detail_path  %> </a>
@@ -246,7 +242,7 @@ margin-left: 15px;  /* Additional styles for the active dot */
             <span class="dropdown-item-text"><%= current_user.profile.name %></span>
             <%end%>
             <% unless current_user.profile.present?  %>
-            <%= link_to 'Add Profile', new_profile_path, class: 'px-3' %></br>
+            <%= link_to 'Update Profile', new_profile_path, class: 'px-3' %></br>
             <%else%>
             <%= link_to 'Profile', profiles_url, class: 'px-3' %></br>
             <%end%>
