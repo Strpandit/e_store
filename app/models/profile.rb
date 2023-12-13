@@ -1,6 +1,6 @@
 class Profile < ApplicationRecord
   belongs_to :user
-  enum :gender, [:male, :female]
+  enum :gender,[:male, :female]
 
   validates :name, :gender, :address, :contact_number, presence: { message: "can't be blank" }
 
